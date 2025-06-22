@@ -1,8 +1,8 @@
-# SynthECG ![status](https://img.shields.io/badge/status-in_progress-yellow)
+# SynthECG 
 
-🚧 **Under Construction**
+![SynthECG](https://img.shields.io/badge/SynthECG-Ready-brightgreen) ![Python](https://img.shields.io/badge/Python-3.11%2B-blue) ![PyTorch](https://img.shields.io/badge/PyTorch-2.4%2B-orange)
 
-This project is in active development. The README and codebase are still being refactored.
+This project contains all the code to perform a systematic evaluation of a model able to produce conditional 10-sec 12-lead ECGs.
 
 ## Models
 
