@@ -1,0 +1,41 @@
+{
+    "diffusion":{
+        "T": 200,
+        "beta_0": 0.0001,
+        "beta_T": 0.02
+    },
+    "model": {
+        "in_channels": 12,
+        "res_channels": 256,
+        "skip_channels": 256,
+        "out_channels": 12,
+        "num_res_layers": 4,
+        "diffusion_step_embed_dim_in": 128,
+        "diffusion_step_embed_dim_mid": 512,
+        "diffusion_step_embed_dim_out": 512,
+        "label_embed_classes": 5,
+        "label_embed_dim": 128
+    },
+
+    "train": {
+        "ckpt_iter": "max",
+        "ckpt_interval": 2000,
+        "log_interval": 200,
+        "n_iters": 100000,
+        "learning_rate": 2e-4,
+        "batch_size": 16,
+        "classifier_path": "models/best_encoder.pth"
+    },
+
+    "dataset":{
+        "segment_length": 1000,
+        "sampling_rate": 100,
+        "data_directory": "data/sinusoid"
+    },
+
+    "experiment":{
+        "project": "Sinusoid",
+        "run": "DSAT",
+        "ckpt_directory": "experiments/checkpoints/Sinusoid_DSAT"
+    }
+}

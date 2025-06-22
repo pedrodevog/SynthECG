@@ -1,0 +1,42 @@
+{
+    "generator": {
+        "post_proc_filt_len": 512,
+        "label_embed_classes": 5,
+        "upsample": true
+    },
+    "discriminator": {
+        "shift_factor": 2,
+        "alpha": 0.2
+    },
+    "model": {
+        "model_size": 50,
+        "n_channels": 12,
+        "verbose": false
+    },
+
+    "train": {
+        "ckpt_iter": "max",
+        "ckpt_interval": 3,
+        "log_interval": 3,
+        "batch_size": 32,
+        "learning_rate": 0.0001,
+        "beta1": 0.5,
+        "beta2": 0.9,
+        "n_epochs": 3000,
+        "lmbda": 10.0,
+        "classifier_path": "models/best_encoder.pth"
+    },
+
+    "dataset": {
+        "segment_length": 1000,
+        "sampling_rate": 100,
+        "data_directory": "data/sinusoid"
+    },
+
+    "experiment": {
+        "project": "Sinusoid", 
+        "run": "P2P",
+        "ckpt_directory": "experiments/checkpoints/Sinusoid_P2P",
+        "action": "train"
+    }
+}

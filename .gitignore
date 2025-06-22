@@ -1,1 +1,17 @@
+/data/*
+/wandb/
+
+# Build and distribution
+build/
+dist/
+*.egg-info/
+__pycache__/
 *.deb
+.idea/
+*.pyc
+cauchy_mult.cpython-311-x86_64-linux-gnu.so
+
+# VSC
+*.slurm
+*.e
+*.o

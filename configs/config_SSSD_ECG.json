@@ -1,0 +1,46 @@
+{
+    "diffusion":{
+        "T": 200,
+        "beta_0": 0.0001,
+        "beta_T": 0.02
+    },
+    "model": {
+        "in_channels": 8,
+        "res_channels": 256,
+        "skip_channels": 256,
+        "num_res_layers": 36,
+        "out_channels": 8,
+        "diffusion_step_embed_dim_in": 128,
+        "diffusion_step_embed_dim_mid": 512,
+        "diffusion_step_embed_dim_out": 512,
+        "s4_lmax": 1000,
+        "s4_d_state": 64,
+        "s4_dropout": 0.0,
+        "s4_bidirectional": 1,
+        "s4_layernorm": 1,
+        "label_embed_classes": 5,
+        "label_embed_dim": 128
+    },
+
+    "train": {
+        "ckpt_iter": "max",
+        "ckpt_interval": 1,
+        "log_interval": 1,
+        "n_iters": 1000,
+        "learning_rate": 2e-4,
+        "batch_size": 16,   
+        "classifier_path": "models/best_encoder.pth"
+    },
+
+    "dataset":{
+        "segment_length": 1000,
+        "sampling_rate": 100,
+        "data_directory": "data/ptbxl"
+    },
+
+    "experiment":{
+        "project": "ECG",
+        "run": "SSSD",
+        "ckpt_directory": "experiments/checkpoints/ECG_SSSD"
+    }
+}
