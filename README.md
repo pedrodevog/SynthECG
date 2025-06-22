@@ -1,4 +1,4 @@
-# SynthECG 
+# SynthECG: First Standardized Evaluation Framework for Synthetic ECGs
 
 ![SynthECG](https://img.shields.io/badge/SynthECG-Ready-brightgreen) ![Python](https://img.shields.io/badge/Python-3.11%2B-blue) ![PyTorch](https://img.shields.io/badge/PyTorch-2.4%2B-orange)
 
