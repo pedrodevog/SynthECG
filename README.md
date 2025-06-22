@@ -4,6 +4,10 @@
 
 This project contains all the code to perform a systematic evaluation of a model able to produce conditional 10-sec 12-lead ECGs.
 
+| PTB-XL Dataset | DSAT-ECG Generated |
+|----------------|-------------------|
+| ![PTB-XL NORM Sample](images/PTBXL_norm_with_stats.jpg) | ![DSAT-ECG NORM Sample](images/DSAT_norm_with_stats.jpg) |
+
 ## Models
 
 The code includes four state-of-the-art generative deep learning models to generate the ECG signals:
