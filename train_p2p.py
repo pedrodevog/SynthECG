@@ -12,12 +12,8 @@ from torch import autograd
 import torchinfo
 
 # Model specific
-
-# Model specific
 from models.cond_pulse2pulse import CondP2PGenerator, CondP2PDiscriminator
 from utils.utils import *
-
-# Evaluation metrics
 from utils.train import *
 
 torch.manual_seed(0)

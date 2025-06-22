@@ -40,3 +40,23 @@ def display_config(config, indent=0):
     if indent == 0:
         print("="*20)
         print("")
+
+
+def generate_four_leads(tensor):
+    """
+    The next code is part of the SSSD-ECG project.
+    Repository: https://github.com/AI4HealthUOL/SSSD-ECG/tree/main
+    """
+    leadI = tensor[:,0,:].unsqueeze(1)
+    leadschest = tensor[:,1:7,:]
+    leadavf = tensor[:,7,:].unsqueeze(1)
+
+    leadII = (0.5*leadI) + leadavf
+
+    leadIII = -(0.5*leadI) + leadavf
+    leadavr = -(0.75*leadI) -(0.5*leadavf)
+    leadavl = (0.75*leadI) - (0.5*leadavf)
+
+    leads12 = torch.cat([leadI, leadII, leadschest, leadIII, leadavr, leadavl, leadavf], dim=1)
+
+    return leads12

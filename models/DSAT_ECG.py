@@ -4,7 +4,7 @@ import torch.nn as nn
 import torch.nn.functional as F
 from tqdm import tqdm
 
-from utils.utils import calc_diffusion_step_embedding
+from utils.train import calc_diffusion_step_embedding
 
 from models.SPADEModel import SpadeDecoderLayerBase
 

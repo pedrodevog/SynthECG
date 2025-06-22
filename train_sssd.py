@@ -9,7 +9,7 @@ import wandb
 from tqdm import tqdm
 
 # Utils
-from utils.utils import training_loss_label, calc_diffusion_hyperparams, log_real_vs_fake, create_reference_bank, display_config
+from utils.utils import *
 from utils.train import *
 
 # Model
@@ -87,7 +87,6 @@ def train(
     # predefine model
     dict_model = {**model_config, **diffusion_hyperparams}
     net = SSSD_ECG(**dict_model).to(device)
-    classifier = initialize_classifier(classifier_path)
     
     # define optimizer
     optimizer = torch.optim.Adam(net.parameters(), lr=learning_rate)
@@ -146,10 +145,6 @@ def train(
     if project == "ECG":
         signals = torch.index_select(torch.tensor(signals), 1, index_8).numpy()
 
-    # [WANDB] needed for generating a sample of each class
-    generate_label = torch.from_numpy(np.eye(n_classes)).to(device).float()
-    ref_real_samples = create_reference_bank(signals, labels, n_classes)
-
     data = []
     for signal, label in zip(signals, labels):
         data.append([signal, label])
@@ -177,15 +172,6 @@ def train(
 
         with torch.no_grad():
             loss_train_epoch_avg = sum(loss_train_epoch) / float(len(loss_train_epoch))
-            generated = None
-            # if n_iter % log_interval == 0:
-            #     print("iteration: {} \tloss: {}".format(n_iter, loss.item()))
-
-            #     generated, generate_label = net.sample_trained_model(samples=n_samples)
-            #     generated_ref_bank = create_reference_bank(generated, generate_label, n_classes)
-
-            #     log_dict = log_real_vs_fake(ref_real_samples, generated_ref_bank, log_dict, prefix="train_")
-            #     log_dict = evaluate(log_dict, signals, labels, test_data, test_labels, model_data=generated, model_labels=generate_label, n_samples=n_samples, n_classes=n_classes, classifier=classifier, project=project)
             
             log_dict["train/loss"] = loss.item()
             log_dict["train/loss_avg"] = loss_train_epoch_avg

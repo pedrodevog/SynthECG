@@ -5,7 +5,7 @@ import math
 import torch
 import torch.nn as nn
 import torch.nn.functional as F
-from utils.utils import calc_diffusion_step_embedding
+from utils.train import calc_diffusion_step_embedding
 from models.S4Model import S4Layer
 from tqdm import tqdm
 
