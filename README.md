@@ -44,49 +44,44 @@ Setting up on Windows or other non-Linux systems requires Docker with GPU suppor
 After setting up Docker, follow the Linux setup steps above.
 
 
-## Features
+### Training & Evaluation Pipeline
 
-### Training
+The SynthECG framework provides a complete pipeline for training generative models and evaluating their performance on ECG synthesis tasks.
 
-`train_wavegan.py`
+| Phase | Script | Description |
+|-------|--------|-------------|
+| **Training** | [`train_wavegan.py`](train_wavegan.py) | Train the WaveGAN* model on ECG data |
+| | [`train_p2p.py`](train_p2p.py) | Train the Pulse2Pulse U-Net GAN model |
+| | [`train_sssd.py`](train_sssd.py) | Train the SSSD-ECG diffusion model |
+| | [`train_dsat.py`](train_dsat.py) | Train the DSAT-ECG transformer model |
+| **Sampling** | [`sample.py`](sample.py) | Generate synthetic ECG signals from trained models |
+| **Evaluating** | [`evaluate.py`](evaluate.py) | Comprehensive evaluation of synthetic vs. real ECG quality |
 
-`train_p2p.py`
+### Core Evaluation Metrics
 
-`train_sssd.py`
+Our framework provides comprehensive evaluation across multiple dimensions of ECG signal quality:
 
-`train_dsat.py`
-
-Train each of the models.
-
-### Sampling
-
-`sample.py`
-
-Sample trained model checkpoints matching PTB-XL dataset.
-
-### Evaluating
-
-`evaluate.py`
-
-For both validation and tesing.
-
-| Metric | Explanation |
+| Metric | Description |
 |--------|-------------|
-| **MMD** | Maximum Mean Discrepancy - measures distributional differences between real and synthetic data |
-| **PSD-MMD** | Power Spectral Density MMD - MMD applied to frequency domain representations |
-| **PSD-PRD** | Power Spectral Density Percent Root-mean-square Difference - PRD applied to frequency domain representations |
-| **FID<sub>ECG</sub>** | Fréchet Inception Distance for ECG - measures quality and diversity of generated ECG signals |
-| **KID<sub>ECG</sub>** | Kernel Inception Distance for ECG - alternative to FID using kernel methods |
-| **TSTR** | Train on Synthetic, Test on Real - evaluates utility of synthetic data for downstream tasks |
-| **TRTS** | Train on Real, Test on Synthetic - measures how well synthetic data represents real data patterns |
-| **NMI** | Normalized Mutual Information - measures statistical dependence between leads |
+| **MMD** | Maximum Mean Discrepancy - measures statistical differences between real and synthetic ECG distributions |
+| **PSD-MMD** | Power Spectral Density MMD - evaluates frequency domain characteristics |
+| **PSD-PRD** | Power Spectral Density Percent Root-mean-square Difference - frequency domain signal fidelity |
+| **FID<sub>ECG</sub>** | Fréchet Inception Distance for ECG - measures realism and diversity of generated signals |
+| **KID<sub>ECG</sub>** | Kernel Inception Distance for ECG - robust alternative to FID using kernel embeddings |
+| **TSTR** | Train on Synthetic, Test on Real - evaluates downstream task performance using synthetic data |
+| **TRTS** | Train on Real, Test on Synthetic - measures representativeness of synthetic data |
+| **NMI** | Normalized Mutual Information - assesses physiological relationships between ECG leads |
 
-#### Also available:
+### Additional Metrics
 
-- RMSE
-- PRD
-- DTW
-- discrete FD
+> **Note**: The following metrics are available in the framework but were not included in the final evaluation due to their limitations for ECG signal assessment. They are primarily included for research completeness and comparison with existing literature.
+
+| Metric | Description | Note |
+|--------|-------------|------|
+| **RMSE** | Root Mean Square Error for point-wise signal comparison | Limited utility for time-series with natural variability |
+| **PRD** | Percent Root-mean-square Difference for point-wise signal comparison | Sensitive to minor temporal shifts |
+| **DTW** | Dynamic Time Warping for temporal alignment assessment | Computationally expensive for large datasets |
+| **Discrete FD** | Discrete Fréchet distance for temporal alignment assessment | May not capture physiological ECG characteristics |
 
 ## Citation
 
