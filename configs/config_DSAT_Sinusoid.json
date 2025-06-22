@@ -24,7 +24,7 @@
         "n_iters": 100000,
         "learning_rate": 2e-4,
         "batch_size": 16,
-        "classifier_path": "models/best_encoder.pth"
+        "classifier_path": "models/classifier.pth"
     },
 
     "dataset":{

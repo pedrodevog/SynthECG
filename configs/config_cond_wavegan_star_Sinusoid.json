@@ -25,7 +25,7 @@
         "beta2": 0.9,
         "n_epochs": 3000,
         "lmbda": 10.0,
-        "classifier_path": "models/best_encoder.pth"
+        "classifier_path": "models/classifier.pth"
     },
 
     "dataset": {
