@@ -99,3 +99,8 @@ If you use this code in your research, please cite:
   school={KU Leuven}
 }
 ```
+
+## Inquiries
+
+Inquiries can be done to pedro.devogelaere@kuleuven.be.
+
